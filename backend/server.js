@@ -23,7 +23,7 @@ app.use(express.json({limit:"10mb"}));
 app.use(cookieParser()); // 3. Placé ICI (Avant CORS et les routes)
 
 app.use(cors({
-    origin: "http://localhost:5173", 
+    origin: "https://skelcom.netlify.app", 
     credentials: true                
 }));
 
