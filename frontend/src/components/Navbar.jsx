@@ -21,7 +21,7 @@ const Navbar = () => {
                 
                 {/* Logo */}
                 <Link to='/' className='text-2xl font-bold text-emerald-400 items-center space-x-2 flex min-w-fit' onClick={() => setIsOpen(false)}>
-                    <h2>Skelcom</h2> kell ecommerce
+                    <h2>Skelcom kell ecommerce</h2> 
                 </Link>
 
                 {/* Barre de recherche centrale */}

@@ -25,14 +25,14 @@ const storeRefreshToken = async (userId, refreshToken) => {
 const setCookies = (res, accessToken, refreshToken) => {
     res.cookie("accessToken", accessToken, {
         httpOnly: true,// Prevents JavaScript access to the cookie
-        secure: process.env.NODE_ENV === "development",// Ensures the cookie is only sent over HTTPS in production
-        sameSite: "strict",// Prevents the cookie from being sent in cross-site requests
+        secure: true,// Ensures the cookie is only sent over HTTPS in production
+        sameSite: "none",// Prevents the cookie from being sent in cross-site requests
         maxAge: 15 * 60 * 1000, // 15 minutes
     });
     res.cookie("refreshToken", refreshToken, {
         httpOnly: true,// Prevents JavaScript access to the cookie
-        secure: process.env.NODE_ENV === "development",// Ensures the cookie is only sent over HTTPS in production   
-        sameSite: "strict",// Prevents the cookie from being sent in cross-site requests
+        secure: true,// Ensures the cookie is only sent over HTTPS in production   
+        sameSite: "none",// Prevents the cookie from being sent in cross-site requests
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 };
@@ -124,8 +124,8 @@ export const refreshToken = async (req, res) => {
        const accessToken = jwt.sign({ userId: decoded.userId }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
        res.cookie("accessToken", accessToken, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",  
-            sameSite: "strict",
+            secure: true,  
+            sameSite: "none",
             maxAge: 15 * 60 * 1000, // 15 minutes
         });
         res.status(200).json({ message: "Tokens refreshed successfully"});
