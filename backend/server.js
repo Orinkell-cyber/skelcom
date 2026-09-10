@@ -22,10 +22,25 @@ app.use("/api/webhook", webhookRoutes);
 app.use(express.json({limit:"10mb"}));
 app.use(cookieParser()); // 3. Placé ICI (Avant CORS et les routes)
 
+const allowedOrigins = [
+  "https://skelcom.netlify.app", 
+  "http://localhost:5173",       
+  "http://localhost:3000"        
+];
+
 app.use(cors({
-    origin: "https://skelcom.netlify.app", 
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        
+        if (allowedOrigins.indexOf(origin) !== -1 || origin.endsWith(".netlify.app")) {
+            callback(null, true);
+        } else {
+            callback(new Error("Bloqué par la politique CORS de Skelcom"));
+        }
+    },
     credentials: true                
 }));
+
 
 // Les routes viennent obligatoirement APRÈS les configurations globales
 app.use("/api/auth", authRoutes);
