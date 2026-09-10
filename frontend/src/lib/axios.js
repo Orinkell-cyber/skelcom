@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const axiosInstance = axios.create({
-  baseURL: skelcom/backend/api",
+  baseURL: "skelcom/backend/api",
   withCredentials: true,
 });
 
