@@ -7,7 +7,7 @@ function Footer() {
         
         {/* Droits d'auteur */}
         <p className="text-sm tracking-wide text-gray-400">
-          © 2026 <span className="text-pastel-pink font-bold tracking-tight">creé par ORIN</span> - Tous droits réservés
+          © 2026 <span className="text-pastel-pink font-bold tracking-tight">creé par ORIN KELL SAFOU</span> - Tous droits réservés
         </p>
 
         {/* Section Réseaux Sociaux */}

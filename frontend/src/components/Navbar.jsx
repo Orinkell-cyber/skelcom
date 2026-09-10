@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ShoppingCart, UserPlus, LogIn, LogOut, Lock, Menu, X, ShoppingBag } from "lucide-react";
+import { ShoppingCart, UserPlus, LogIn, LogOut, Lock, Menu, X, ShoppingBag, Heading2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useUserStore } from "../stores/useUserStore";
 import { useCartStore } from "../stores/useCartStore";
@@ -21,9 +21,9 @@ const Navbar = () => {
                 
                 {/* Logo */}
                 <Link to='/' className='text-2xl font-bold text-emerald-400 items-center space-x-2 flex min-w-fit' onClick={() => setIsOpen(false)}>
-                    <h2>Skelcom kell ecommerce</h2> 
+                    Skell commerce  
                 </Link>
-
+                <h2>kell ecommerce</h2>
                 {/* Barre de recherche centrale */}
                 <form onSubmit={handleSearchSubmit} className="hidden md:flex items-center flex-grow max-w-md relative mx-4">
                     <input
