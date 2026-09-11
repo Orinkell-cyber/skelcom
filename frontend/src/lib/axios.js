@@ -1,10 +1,9 @@
 // src/lib/axios.js
 import axios from "axios";
-import dotenv from "dotenv";
-dotenv.config();
+
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000',
+  baseURL: "https://skelcom.onrender.com",
   withCredentials: true,
 });
 
@@ -17,13 +16,13 @@ axiosInstance.interceptors.response.use(
     // 💡 CONDITION DE SÉCURITÉ ANTI-BOUCLE INFINIE :
     // Si l'erreur est un 401 ET que la requête originale concernait déjà le refresh-token,
     // on stoppe tout de suite pour éviter la boucle infinie !
-    if (originalRequest.url.includes("/auth/refresh-token")) {
+    if (originalRequest?.url?.includes("/auth/refresh-token")) {
       // Optionnel : vous pouvez forcer une déconnexion ici ou vider l'état du useUserStore
       return Promise.reject(error);
     }
 
     // Si c'est une autre requête qui a pris un 401 et qu'elle n'a pas encore été rejouée
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    if (error.response?.status === 401 && !originalRequest?._retry) {
       originalRequest._retry = true; // On marque la requête pour ne la rejouer qu'une seule fois
 
       try {
