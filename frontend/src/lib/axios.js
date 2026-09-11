@@ -1,9 +1,12 @@
 // src/lib/axios.js
 import axios from "axios";
 
-
+const BASE_URL = window.location.hostname === "localhost" 
+        ? "http://localhost:3000/api" // (ou 5000 selon votre local)
+        : "https://back-s10p.onrender.com/api";
 const axiosInstance = axios.create({
-  baseURL: "https://back-s10p.onrender.com/api", // Remplacez par l'URL de votre backend
+   baseURL: BASE_URL,
+  // Remplacez par l'URL de votre backend
   withCredentials: true,
 });
 
