@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const axiosInstance = axios.create({
-  baseURL: "https://skelcom.onrender.com/api", // Remplacez par l'URL de votre backend
+  baseURL: "https://back-s10p.onrender.com/api", // Remplacez par l'URL de votre backend
   withCredentials: true,
 });
 
